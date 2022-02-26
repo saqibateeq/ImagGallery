@@ -1,5 +1,6 @@
 package com.app.imaggallery.viewmodels;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class GalleryViewModel extends ViewModel {
 
-    private GalleryRepository galleryRepository;
+    private final GalleryRepository galleryRepository;
 
     public GalleryViewModel(){
         galleryRepository = new GalleryRepository();
@@ -18,5 +19,13 @@ public class GalleryViewModel extends ViewModel {
 
     public MutableLiveData<List<GalleryItem>> loadImagesFromServer(){
         return galleryRepository.getImagesFromServer();
+    }
+
+    public LiveData<List<GalleryItem>> loadImagesFromDatabase(){
+        return galleryRepository.getImagesFromDatabase();
+    }
+
+    public void storeDataInDatabase(List<GalleryItem> itemsList){
+        galleryRepository.insertDataInDatabase(itemsList);
     }
 }

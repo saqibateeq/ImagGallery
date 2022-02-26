@@ -9,7 +9,6 @@ import retrofit2.http.GET;
 
 public interface GalleryService {
 
-    @GET("https://jsonplaceholder.typicode.com/photos")
+    @GET("photos")
     Call<List<GalleryItem>> fetchImagesFromServer();
-
 }
